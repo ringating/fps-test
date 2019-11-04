@@ -1,0 +1,114 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scripts/mouse_look.gd" type="Script" id=1]
+[ext_resource path="res://worlds/viewmodel_world.tres" type="World" id=2]
+[ext_resource path="res://default_env.tres" type="Environment" id=3]
+[ext_resource path="res://scripts/viewmodel_drag.gd" type="Script" id=4]
+
+[sub_resource type="CubeMesh" id=1]
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="CylinderMesh" id=3]
+
+[node name="root_spatial" type="Spatial"]
+
+[node name="main_camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+current = true
+fov = 90.0
+script = ExtResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -5 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="MeshInstance6" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="MeshInstance3" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="MeshInstance4" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -5 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="MeshInstance8" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 5 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="MeshInstance5" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 5 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="MeshInstance7" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -5 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="viewmodel_vp_container" type="ViewportContainer" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+mouse_filter = 2
+
+[node name="viewmodel_viewport" type="Viewport" parent="viewmodel_vp_container"]
+size = Vector2( 1280, 720 )
+own_world = true
+world = ExtResource( 2 )
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="viewmodel_camera" type="Camera" parent="viewmodel_vp_container/viewmodel_viewport"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+environment = ExtResource( 3 )
+current = true
+fov = 90.0
+
+[node name="gun_model_root" type="Spatial" parent="viewmodel_vp_container/viewmodel_viewport/viewmodel_camera"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.363, -0.698 )
+script = ExtResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="viewmodel_vp_container/viewmodel_viewport/viewmodel_camera/gun_model_root"]
+transform = Transform( 0.139047, 0, 0, 0, 0.198476, 0, 0, 0, 1, 0, 0.0789787, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="MeshInstance4" type="MeshInstance" parent="viewmodel_vp_container/viewmodel_viewport/viewmodel_camera/gun_model_root"]
+transform = Transform( 0.0235357, 0, 0, 0, 0.0720178, 0, 0, 0, 0.0764464, 0, 0.291413, -0.893516 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="MeshInstance5" type="MeshInstance" parent="viewmodel_vp_container/viewmodel_viewport/viewmodel_camera/gun_model_root"]
+transform = Transform( 0.0235357, 0, 0, 0, 0.0720178, 0, 0, 0, 0.0764464, 0.0977168, 0.291413, 0.260793 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="MeshInstance6" type="MeshInstance" parent="viewmodel_vp_container/viewmodel_viewport/viewmodel_camera/gun_model_root"]
+transform = Transform( 0.0235357, 0, 0, 0, 0.0720178, 0, 0, 0, 0.0764464, -0.098, 0.291447, 0.261024 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="viewmodel_vp_container/viewmodel_viewport/viewmodel_camera/gun_model_root"]
+transform = Transform( 0.0917916, 0, 0, 0, 0.368292, -0.0416038, 0, 0.102356, 0.149696, 0, -0.257973, -0.251114 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="MeshInstance3" type="MeshInstance" parent="viewmodel_vp_container/viewmodel_viewport/viewmodel_camera/gun_model_root"]
+transform = Transform( 0.0836793, 0, 0, 0, -2.4335e-008, 0.0836793, 0, -0.556721, -3.65774e-009, 0, 0.173528, -1.22167 )
+mesh = SubResource( 3 )
+material/0 = null
