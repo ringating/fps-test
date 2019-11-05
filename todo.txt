@@ -1,0 +1,13 @@
+firing
+    +kick/recoil
+        simple snap back lerp forward
+        perhaps just add a public function addToOffset(Vector3) that another script can call on each shot
+    -screen shake
+        spring motion with linear dampening
+            positional: probably
+            rotational: maybe (this would actually work really well if using Camera.unproject_position(Vector3) to determine crosshair location on screen)
+    -sound
+        yoink some sound from some game
+        alternatively, use a sound from that big sound library you downloaded at some point
+    -angle weapon in response to mouse movement
+        mixing this with the positional sway may be good

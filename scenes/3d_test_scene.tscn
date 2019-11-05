@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/mouse_look.gd" type="Script" id=1]
 [ext_resource path="res://worlds/viewmodel_world.tres" type="World" id=2]
 [ext_resource path="res://default_env.tres" type="Environment" id=3]
-[ext_resource path="res://scripts/viewmodel_drag.gd" type="Script" id=4]
-[ext_resource path="res://scripts/print_fps_to_label.gd" type="Script" id=5]
+[ext_resource path="res://scripts/viewmodel_sway.gd" type="Script" id=4]
+[ext_resource path="res://scripts/fire_weapon.gd" type="Script" id=5]
+[ext_resource path="res://scripts/print_fps_to_label.gd" type="Script" id=6]
+
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -80,7 +82,6 @@ current = true
 fov = 90.0
 
 [node name="gun_model_root" type="Spatial" parent="viewmodel_vp_container/viewmodel_viewport/viewmodel_camera"]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.363, -0.698 )
 script = ExtResource( 4 )
 
@@ -114,6 +115,9 @@ transform = Transform( 0.0836793, 0, 0, 0, -2.4335e-008, 0.0836793, 0, -0.556721
 mesh = SubResource( 3 )
 material/0 = null
 
+[node name="Node" type="Node" parent="viewmodel_vp_container/viewmodel_viewport/viewmodel_camera/gun_model_root"]
+script = ExtResource( 5 )
+
 [node name="ViewportContainer" type="ViewportContainer" parent="."]
 margin_right = 80.0
 margin_bottom = 40.0
@@ -122,4 +126,4 @@ margin_bottom = 40.0
 margin_right = 40.0
 margin_bottom = 14.0
 text = "asdf"
-script = ExtResource( 5 )
+script = ExtResource( 6 )
