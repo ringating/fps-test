@@ -19,6 +19,10 @@ config/name="fps-test"
 run/main_scene="res://scenes/3d_test_scene.tscn"
 config/icon="res://icon.png"
 
+[debug]
+
+settings/fps/force_fps=300
+
 [display]
 
 window/size/width=1280
