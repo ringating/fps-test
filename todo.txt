@@ -11,3 +11,9 @@ firing
         alternatively, use a sound from that big sound library you downloaded at some point
     -angle weapon in response to mouse movement
         mixing this with the positional sway may be good
+        
+        
+-timer to cap framerate
+
+-restrict vertical mouselook?
+    tbh who cares really, might play nicer even if it's nonstandard

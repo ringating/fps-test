@@ -1,12 +1,14 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://scripts/mouse_look.gd" type="Script" id=1]
-[ext_resource path="res://worlds/viewmodel_world.tres" type="World" id=2]
-[ext_resource path="res://default_env.tres" type="Environment" id=3]
-[ext_resource path="res://scripts/viewmodel_sway.gd" type="Script" id=4]
-[ext_resource path="res://scripts/fire_weapon.gd" type="Script" id=5]
-[ext_resource path="res://scripts/print_fps_to_label.gd" type="Script" id=6]
-
+[ext_resource path="res://scripts/tools_and_references.gd" type="Script" id=1]
+[ext_resource path="res://scripts/mouse_look.gd" type="Script" id=2]
+[ext_resource path="res://scripts/register_main_camera.gd" type="Script" id=3]
+[ext_resource path="res://worlds/viewmodel_world.tres" type="World" id=4]
+[ext_resource path="res://default_env.tres" type="Environment" id=5]
+[ext_resource path="res://scripts/register_viewmodel_camera.gd" type="Script" id=6]
+[ext_resource path="res://scripts/viewmodel_sway.gd" type="Script" id=7]
+[ext_resource path="res://scripts/fire_weapon.gd" type="Script" id=8]
+[ext_resource path="res://scripts/print_fps_to_label.gd" type="Script" id=9]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -15,12 +17,16 @@
 [sub_resource type="CylinderMesh" id=3]
 
 [node name="root_spatial" type="Spatial"]
+script = ExtResource( 1 )
 
 [node name="main_camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 current = true
 fov = 90.0
-script = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Node" type="Node" parent="main_camera"]
+script = ExtResource( 3 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -5 )
@@ -70,20 +76,23 @@ mouse_filter = 2
 [node name="viewmodel_viewport" type="Viewport" parent="viewmodel_vp_container"]
 size = Vector2( 1280, 720 )
 own_world = true
-world = ExtResource( 2 )
+world = ExtResource( 4 )
 transparent_bg = true
 handle_input_locally = false
 render_target_update_mode = 3
 
 [node name="viewmodel_camera" type="Camera" parent="viewmodel_vp_container/viewmodel_viewport"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
-environment = ExtResource( 3 )
+environment = ExtResource( 5 )
 current = true
 fov = 90.0
 
+[node name="Node" type="Node" parent="viewmodel_vp_container/viewmodel_viewport/viewmodel_camera"]
+script = ExtResource( 6 )
+
 [node name="gun_model_root" type="Spatial" parent="viewmodel_vp_container/viewmodel_viewport/viewmodel_camera"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.363, -0.698 )
-script = ExtResource( 4 )
+script = ExtResource( 7 )
 
 [node name="MeshInstance" type="MeshInstance" parent="viewmodel_vp_container/viewmodel_viewport/viewmodel_camera/gun_model_root"]
 transform = Transform( 0.139047, 0, 0, 0, 0.198476, 0, 0, 0, 1, 0, 0.0789787, 0 )
@@ -116,7 +125,7 @@ mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Node" type="Node" parent="viewmodel_vp_container/viewmodel_viewport/viewmodel_camera/gun_model_root"]
-script = ExtResource( 5 )
+script = ExtResource( 8 )
 
 [node name="ViewportContainer" type="ViewportContainer" parent="."]
 margin_right = 80.0
@@ -126,4 +135,4 @@ margin_bottom = 40.0
 margin_right = 40.0
 margin_bottom = 14.0
 text = "asdf"
-script = ExtResource( 6 )
+script = ExtResource( 9 )
