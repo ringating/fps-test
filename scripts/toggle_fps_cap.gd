@@ -1,19 +1,9 @@
 extends Node
 
-var targetFPS : float = 69 setget setTargetFPS
+var targetFPS : float = 90 setget setTargetFPS
 
 var desired_delta : float = 1/targetFPS
 var wait : float = 0
-
-#var prev_delta : float = 0
-#var prev_wait_usec : int = 0
-
-# Called when the node enters the scene tree for the first time.
-#func _ready():
-#	print("initial force_fps: %d" % ProjectSettings.get_setting("debug/settings/fps/force_fps"))
-#	ProjectSettings.set_setting("debug/settings/fps/force_fps", 10)
-#	ProjectSettings.save()
-#	print("force_fps: %d" % ProjectSettings.get_setting("debug/settings/fps/force_fps"))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

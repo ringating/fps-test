@@ -21,7 +21,7 @@ func _process(delta):
 	else:
 		aimDelta = Vector2.ZERO;
 
-func _unhandled_input(event):
+func _input(event):
 	print("event is %s" % event)
 	if event is InputEventMouseMotion:
 		mousePosDelta = event.get_relative()
