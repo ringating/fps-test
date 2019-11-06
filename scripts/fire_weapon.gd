@@ -1,6 +1,6 @@
 extends Node
 
-export var rpm : float = 400 # rounds per minute
+export var rpm : float = 800 # rounds per minute
 var recoilOffset : Vector3 = Vector3(0, 0, 0.3)
 
 var timeBetweenShots : float = 1/(rpm/60) # in seconds
