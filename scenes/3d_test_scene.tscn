@@ -1,6 +1,6 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://scripts/tools_and_references.gd" type="Script" id=1]
+[ext_resource path="res://scripts/references.gd" type="Script" id=1]
 [ext_resource path="res://scripts/mouse_look.gd" type="Script" id=2]
 [ext_resource path="res://scripts/register_main_camera.gd" type="Script" id=3]
 [ext_resource path="res://worlds/viewmodel_world.tres" type="World" id=4]
@@ -9,7 +9,8 @@
 [ext_resource path="res://scripts/viewmodel_sway.gd" type="Script" id=7]
 [ext_resource path="res://scripts/fire_weapon.gd" type="Script" id=8]
 [ext_resource path="res://scripts/print_fps_to_label.gd" type="Script" id=9]
-[ext_resource path="res://scripts/toggle_fps_cap.gd" type="Script" id=10]
+[ext_resource path="res://scripts/crosshair.gd" type="Script" id=10]
+[ext_resource path="res://scripts/toggle_fps_cap.gd" type="Script" id=11]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -24,11 +25,16 @@ script = ExtResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 script = ExtResource( 2 )
 
-[node name="main_camera" type="Camera" parent="mouse_look"]
+[node name="crosshair_anchor" type="Spatial" parent="mouse_look"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1 )
+
+[node name="camera_shake" type="Spatial" parent="mouse_look"]
+
+[node name="main_camera" type="Camera" parent="mouse_look/camera_shake"]
 current = true
 fov = 90.0
 
-[node name="register_main_camera" type="Node" parent="mouse_look/main_camera"]
+[node name="register_main_camera" type="Node" parent="mouse_look/camera_shake/main_camera"]
 script = ExtResource( 3 )
 
 [node name="viewmodel_container" type="ViewportContainer" parent="."]
@@ -101,6 +107,34 @@ margin_bottom = 14.0
 text = "1234"
 script = ExtResource( 9 )
 
+[node name="crosshair" type="Node2D" parent="2D_UI_container"]
+position = Vector2( 640, 360 )
+script = ExtResource( 10 )
+
+[node name="crosshair_N" type="ColorRect" parent="2D_UI_container/crosshair"]
+margin_left = -5.0
+margin_top = -5.0
+margin_right = 5.0
+margin_bottom = 5.0
+
+[node name="crosshair_S" type="ColorRect" parent="2D_UI_container/crosshair"]
+margin_left = -5.0
+margin_top = -5.0
+margin_right = 5.0
+margin_bottom = 5.0
+
+[node name="crosshair_E" type="ColorRect" parent="2D_UI_container/crosshair"]
+margin_left = -5.0
+margin_top = -5.0
+margin_right = 5.0
+margin_bottom = 5.0
+
+[node name="crosshair_W" type="ColorRect" parent="2D_UI_container/crosshair"]
+margin_left = -5.0
+margin_top = -5.0
+margin_right = 5.0
+margin_bottom = 5.0
+
 [node name="terrain" type="Spatial" parent="."]
 editor/display_folded = true
 
@@ -145,4 +179,4 @@ mesh = SubResource( 3 )
 material/0 = null
 
 [node name="fps_cap" type="Node" parent="."]
-script = ExtResource( 10 )
+script = ExtResource( 11 )

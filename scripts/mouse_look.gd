@@ -22,7 +22,6 @@ func _process(delta):
 		aimDelta = Vector2.ZERO;
 
 func _input(event):
-	print("event is %s" % event)
 	if event is InputEventMouseMotion:
 		mousePosDelta = event.get_relative()
 		mouseWarpDelta = (windowRes/2) - event.position
