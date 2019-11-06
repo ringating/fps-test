@@ -34,7 +34,7 @@ var lerpRate : Vector3 = hipLerpRate
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	mouseLook = get_node("/root/root_spatial/main_camera")
+	mouseLook = get_node("/root/root_spatial/mouse_look")
 
 
 # a rate of 1 should travel half the distance in 1 sec, a rate of 2 should go twice as fast

@@ -13,7 +13,12 @@ firing
         mixing this with the positional sway may be good
         
         
--timer to cap framerate
+-timer to cap framerate?
 
 -restrict vertical mouselook?
     tbh who cares really, might play nicer even if it's nonstandard
+
+
+
+dumb ideas
+    make camera lerp to actual aim position (shown by crosshair moving independently of camera)
