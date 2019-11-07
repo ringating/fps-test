@@ -2,7 +2,7 @@ extends Node2D
 
 var chLength : int = 12
 var chWidth : int = 4
-var chDrawCenter : bool = false
+var chDrawCenter : bool = true
 
 var chCenter : ColorRect
 var chNorth : ColorRect
@@ -36,9 +36,7 @@ func _ready():
 	
 	chCenter.rect_size = Vector2(chWidth, chWidth)
 	chCenter.visible = chDrawCenter
-	
 	setControlPosCentered(chCenter, Vector2.ZERO)
-	setCrosshairRadius(0)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
