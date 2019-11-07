@@ -72,7 +72,6 @@ fov = 90.0
 script = ExtResource( 8 )
 
 [node name="gun_model_root" type="Spatial" parent="viewmodel_container/viewmodel_viewport/Spatial"]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.363, -0.698 )
 script = ExtResource( 9 )
 
@@ -106,7 +105,7 @@ transform = Transform( 0.0836793, 0, 0, 0, -2.4335e-008, 0.0836793, 0, -0.556721
 mesh = SubResource( 2 )
 material/0 = null
 
-[node name="Node" type="Node" parent="viewmodel_container/viewmodel_viewport/Spatial/gun_model_root"]
+[node name="fire" type="Node" parent="viewmodel_container/viewmodel_viewport/Spatial/gun_model_root"]
 script = ExtResource( 10 )
 
 [node name="2D_UI_container" type="ViewportContainer" parent="."]

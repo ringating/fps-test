@@ -1,7 +1,7 @@
 extends Node2D
 
-var chLength : int = 12
-var chWidth : int = 4
+var chLength : int = 10
+var chWidth : int = 2
 var chDrawCenter : bool = true
 
 var chCenter : ColorRect
@@ -45,7 +45,7 @@ func _process(delta):
 	
 	# just to demo functionality
 	timer += delta
-	setCrosshairRadius(40 * (sin(timer * 4) + 1))
+	setCrosshairRadius(30 * (sin(timer * 4) + 1))
 
 func setCrosshairRadius(radius : int):
 	setControlPosCentered(chNorth, Vector2(0, -chWidth/2 - radius - chLength/2))

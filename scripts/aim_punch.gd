@@ -2,15 +2,25 @@ extends Spatial
 
 var tools
 var vmSpatial
-var recoveryLerpRate : float = 6
+var recoveryLerpRate : float = 6 setget setRecoveryLerpRate
 var vmScalar : float = 0.3
+
+var vms : float = vmScalar
 
 
 func aimPunch(horizontal:float, vertical:float):
 	rotate(Vector3.UP, horizontal)
 	rotate(Vector3.RIGHT, vertical)
-	vmSpatial.rotate(Vector3.UP, horizontal*vmScalar)
-	vmSpatial.rotate(Vector3.RIGHT, vertical*vmScalar)
+	if(Input.is_action_pressed("ADS")):
+		vms = 1
+	else:
+		vms = vmScalar
+	vmSpatial.rotate(Vector3.UP, horizontal*vms)
+	vmSpatial.rotate(Vector3.RIGHT, vertical*vms)
+
+
+func setRecoveryLerpRate(rate : float):
+	recoveryLerpRate = rate
 
 
 # Called when the node enters the scene tree for the first time.
