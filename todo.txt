@@ -21,4 +21,4 @@ firing
 
 
 dumb ideas
-    make camera lerp to actual aim position (shown by crosshair moving independently of camera)
+    aiming only instantly affects the crosshair, camera lerps to catch up
