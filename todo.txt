@@ -1,10 +1,14 @@
 need todo
+    figure out how to use classes properly
+        want to be able to make a gun class that contains all the necessary variables to have a unique gun
     movement
+        collision
     recoil (non-placeholder)
     nice screen shake
+    dynamic fov adjustment (for ads)
     sound
 
-nice to do
+nice todo
     angle weapon in response to mouse movement
         mixing this with the positional sway may be good
     restrict vertical mouselook?
