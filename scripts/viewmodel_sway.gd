@@ -4,16 +4,18 @@ extends Spatial
 ##### tune-able constants #####
 
 # where the weapon is located when motionless
-var hipBasePos : Vector3 = Vector3(0.6, -0.5, -0.8)
-var adsBasePos : Vector3 = Vector3(0.0,-0.38, -0.8)
+#var hipBasePos : Vector3 = Vector3(0.6, -0.5, -0.8)
+var hipBasePos : Vector3 = Vector3(0.52, -0.62, -1.06)
+#var adsBasePos : Vector3 = Vector3(0.0,-0.38, -0.8)
+var adsBasePos : Vector3 = Vector3(0.0, -0.33, -0.85)
 
 # how far the weapon should move due to mouse movements (x,y) and recoil (z)
 var hipMotionScalar : Vector3 = Vector3(0.03, 0.03, 1)
-var adsMotionScalar : Vector3 = Vector3(0.008, 0.008, 0.75)
+var adsMotionScalar : Vector3 = Vector3(0.004, 0.004, 0.75)
 
 # how quickly the weapon should react to mouse movements (x,y) and recover from recoil (z)
 var hipLerpRate : Vector3 = Vector3(16, 16, 20)
-var adsLerpRate : Vector3 = Vector3(18, 18, 20)
+var adsLerpRate : Vector3 = Vector3(30, 30, 20)
 
 # how quickly to change all of the above values from...
 var toHipLerpRateBP : float = 10 # ...ADS to HIP

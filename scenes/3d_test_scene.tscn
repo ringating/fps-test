@@ -1,18 +1,21 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scripts/references.gd" type="Script" id=1]
 [ext_resource path="res://scripts/mouse_look.gd" type="Script" id=2]
-[ext_resource path="res://scripts/aim_punch.gd" type="Script" id=3]
-[ext_resource path="res://scripts/rotation_camera_shake.gd" type="Script" id=4]
-[ext_resource path="res://scripts/register_main_camera.gd" type="Script" id=5]
-[ext_resource path="res://worlds/viewmodel_world.tres" type="World" id=6]
-[ext_resource path="res://default_env.tres" type="Environment" id=7]
-[ext_resource path="res://scripts/register_viewmodel_camera.gd" type="Script" id=8]
-[ext_resource path="res://scripts/viewmodel_sway.gd" type="Script" id=9]
-[ext_resource path="res://scripts/fire_weapon.gd" type="Script" id=10]
-[ext_resource path="res://scripts/print_fps_to_label.gd" type="Script" id=11]
-[ext_resource path="res://scripts/crosshair.gd" type="Script" id=12]
-[ext_resource path="res://scripts/toggle_fps_cap.gd" type="Script" id=13]
+[ext_resource path="res://scripts/smooth_rotation_lag.gd" type="Script" id=3]
+[ext_resource path="res://scripts/aim_punch.gd" type="Script" id=4]
+[ext_resource path="res://scripts/rotation_camera_shake.gd" type="Script" id=5]
+[ext_resource path="res://scripts/register_main_camera.gd" type="Script" id=6]
+[ext_resource path="res://worlds/viewmodel_world.tres" type="World" id=7]
+[ext_resource path="res://default_env.tres" type="Environment" id=8]
+[ext_resource path="res://scripts/register_viewmodel_camera.gd" type="Script" id=9]
+[ext_resource path="res://scripts/viewmodel_sway.gd" type="Script" id=10]
+[ext_resource path="res://scripts/fire_weapon.gd" type="Script" id=11]
+[ext_resource path="res://3D_models/skorpion.obj" type="ArrayMesh" id=12]
+[ext_resource path="res://3D_models/skorp_material.tres" type="Material" id=13]
+[ext_resource path="res://scripts/print_fps_to_label.gd" type="Script" id=14]
+[ext_resource path="res://scripts/crosshair.gd" type="Script" id=15]
+[ext_resource path="res://scripts/toggle_fps_cap.gd" type="Script" id=16]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -30,18 +33,21 @@ script = ExtResource( 2 )
 [node name="crosshair_anchor" type="Spatial" parent="mouse_look"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1 )
 
-[node name="aim_punch" type="Spatial" parent="mouse_look"]
+[node name="sin" type="Spatial" parent="mouse_look"]
 script = ExtResource( 3 )
 
-[node name="camera_shake" type="Spatial" parent="mouse_look/aim_punch"]
+[node name="aim_punch" type="Spatial" parent="mouse_look/sin"]
 script = ExtResource( 4 )
 
-[node name="main_camera" type="Camera" parent="mouse_look/aim_punch/camera_shake"]
+[node name="camera_shake" type="Spatial" parent="mouse_look/sin/aim_punch"]
+script = ExtResource( 5 )
+
+[node name="main_camera" type="Camera" parent="mouse_look/sin/aim_punch/camera_shake"]
 current = true
 fov = 90.0
 
-[node name="register_main_camera" type="Node" parent="mouse_look/aim_punch/camera_shake/main_camera"]
-script = ExtResource( 5 )
+[node name="register_main_camera" type="Node" parent="mouse_look/sin/aim_punch/camera_shake/main_camera"]
+script = ExtResource( 6 )
 
 [node name="viewmodel_container" type="ViewportContainer" parent="."]
 margin_right = 1280.0
@@ -51,62 +57,72 @@ mouse_filter = 2
 [node name="viewmodel_viewport" type="Viewport" parent="viewmodel_container"]
 size = Vector2( 1280, 720 )
 own_world = true
-world = ExtResource( 6 )
+world = ExtResource( 7 )
 transparent_bg = true
 handle_input_locally = false
 render_target_update_mode = 3
 
 [node name="Spatial" type="Spatial" parent="viewmodel_container/viewmodel_viewport"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 
 [node name="vm_aim_punch" type="Spatial" parent="viewmodel_container/viewmodel_viewport/Spatial"]
 
 [node name="vm_camera_shake" type="Spatial" parent="viewmodel_container/viewmodel_viewport/Spatial/vm_aim_punch"]
 
 [node name="viewmodel_camera" type="Camera" parent="viewmodel_container/viewmodel_viewport/Spatial/vm_aim_punch/vm_camera_shake"]
-environment = ExtResource( 7 )
+environment = ExtResource( 8 )
 current = true
 fov = 90.0
 
 [node name="register_viewmodel_camera" type="Node" parent="viewmodel_container/viewmodel_viewport/Spatial/vm_aim_punch/vm_camera_shake/viewmodel_camera"]
-script = ExtResource( 8 )
-
-[node name="gun_model_root" type="Spatial" parent="viewmodel_container/viewmodel_viewport/Spatial"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.363, -0.698 )
 script = ExtResource( 9 )
 
-[node name="MeshInstance" type="MeshInstance" parent="viewmodel_container/viewmodel_viewport/Spatial/gun_model_root"]
+[node name="gun_model_root" type="Spatial" parent="viewmodel_container/viewmodel_viewport/Spatial"]
+script = ExtResource( 10 )
+
+[node name="fire" type="Node" parent="viewmodel_container/viewmodel_viewport/Spatial/gun_model_root"]
+script = ExtResource( 11 )
+
+[node name="graybox_gun" type="Spatial" parent="viewmodel_container/viewmodel_viewport/Spatial/gun_model_root"]
+editor/display_folded = true
+visible = false
+
+[node name="MeshInstance" type="MeshInstance" parent="viewmodel_container/viewmodel_viewport/Spatial/gun_model_root/graybox_gun"]
 transform = Transform( 0.139047, 0, 0, 0, 0.198476, 0, 0, 0, 1, 0, 0.0789787, 0 )
 mesh = SubResource( 1 )
 material/0 = null
 
-[node name="MeshInstance4" type="MeshInstance" parent="viewmodel_container/viewmodel_viewport/Spatial/gun_model_root"]
+[node name="MeshInstance4" type="MeshInstance" parent="viewmodel_container/viewmodel_viewport/Spatial/gun_model_root/graybox_gun"]
 transform = Transform( 0.0235357, 0, 0, 0, 0.0720178, 0, 0, 0, 0.0764464, 0, 0.291413, -0.893516 )
 mesh = SubResource( 1 )
 material/0 = null
 
-[node name="MeshInstance5" type="MeshInstance" parent="viewmodel_container/viewmodel_viewport/Spatial/gun_model_root"]
+[node name="MeshInstance5" type="MeshInstance" parent="viewmodel_container/viewmodel_viewport/Spatial/gun_model_root/graybox_gun"]
 transform = Transform( 0.0235357, 0, 0, 0, 0.0720178, 0, 0, 0, 0.0764464, 0.0977168, 0.291413, 0.260793 )
 mesh = SubResource( 1 )
 material/0 = null
 
-[node name="MeshInstance6" type="MeshInstance" parent="viewmodel_container/viewmodel_viewport/Spatial/gun_model_root"]
+[node name="MeshInstance6" type="MeshInstance" parent="viewmodel_container/viewmodel_viewport/Spatial/gun_model_root/graybox_gun"]
 transform = Transform( 0.0235357, 0, 0, 0, 0.0720178, 0, 0, 0, 0.0764464, -0.098, 0.291447, 0.261024 )
 mesh = SubResource( 1 )
 material/0 = null
 
-[node name="MeshInstance2" type="MeshInstance" parent="viewmodel_container/viewmodel_viewport/Spatial/gun_model_root"]
+[node name="MeshInstance2" type="MeshInstance" parent="viewmodel_container/viewmodel_viewport/Spatial/gun_model_root/graybox_gun"]
 transform = Transform( 0.0917916, 0, 0, 0, 0.368292, -0.0416038, 0, 0.102356, 0.149696, 0, -0.257973, -0.251114 )
 mesh = SubResource( 1 )
 material/0 = null
 
-[node name="MeshInstance3" type="MeshInstance" parent="viewmodel_container/viewmodel_viewport/Spatial/gun_model_root"]
+[node name="MeshInstance3" type="MeshInstance" parent="viewmodel_container/viewmodel_viewport/Spatial/gun_model_root/graybox_gun"]
 transform = Transform( 0.0836793, 0, 0, 0, -2.4335e-008, 0.0836793, 0, -0.556721, -3.65774e-009, 0, 0.173528, -1.22167 )
 mesh = SubResource( 2 )
 material/0 = null
 
-[node name="fire" type="Node" parent="viewmodel_container/viewmodel_viewport/Spatial/gun_model_root"]
-script = ExtResource( 10 )
+[node name="skorpion_spatial" type="Spatial" parent="viewmodel_container/viewmodel_viewport/Spatial/gun_model_root"]
+editor/display_folded = true
+
+[node name="MeshInstance" type="MeshInstance" parent="viewmodel_container/viewmodel_viewport/Spatial/gun_model_root/skorpion_spatial"]
+transform = Transform( -0.1, 0, -1.50996e-008, 0, 0.1, 0, 1.50996e-008, 0, -0.1, 0, 0, 0 )
+mesh = ExtResource( 12 )
+material/0 = ExtResource( 13 )
 
 [node name="2D_UI_container" type="ViewportContainer" parent="."]
 margin_right = 1280.0
@@ -116,11 +132,11 @@ margin_bottom = 720.0
 margin_right = 40.0
 margin_bottom = 14.0
 text = "1234"
-script = ExtResource( 11 )
+script = ExtResource( 14 )
 
 [node name="crosshair" type="Node2D" parent="2D_UI_container"]
 position = Vector2( 640, 360 )
-script = ExtResource( 12 )
+script = ExtResource( 15 )
 
 [node name="crosshair_center" type="ColorRect" parent="2D_UI_container/crosshair"]
 margin_right = 40.0
@@ -186,4 +202,4 @@ mesh = SubResource( 3 )
 material/0 = null
 
 [node name="fps_cap" type="Node" parent="."]
-script = ExtResource( 13 )
+script = ExtResource( 16 )

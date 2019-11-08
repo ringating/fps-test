@@ -1,24 +1,11 @@
-firing
-    +kick/recoil
-        simple snap back lerp forward
-        perhaps just add a public function addToOffset(Vector3) that another script can call on each shot
-    -screen shake
-        spring motion with linear dampening (add speed towards center, where magnitude of added speed is relative to distance from center, but also dampen)
-            positional: probably
-            rotational: maybe (this would actually work really well if using Camera.unproject_position(Vector3) to determine crosshair location on screen)
-    -sound
-        yoink some sound from some game
-        alternatively, use a sound from that big sound library you downloaded at some point
-    -angle weapon in response to mouse movement
+need todo
+    movement
+    recoil (non-placeholder)
+    nice screen shake
+    sound
+
+nice to do
+    angle weapon in response to mouse movement
         mixing this with the positional sway may be good
-        
-        
--timer to cap framerate?
-
--restrict vertical mouselook?
-    tbh who cares really, might play nicer even if it's nonstandard
-
-
-
-dumb ideas
-    aiming only instantly affects the crosshair, camera lerps to catch up
+    restrict vertical mouselook?
+        tbh who cares really, might even play nicer despite being nonstandard

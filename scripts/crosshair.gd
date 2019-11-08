@@ -1,7 +1,7 @@
 extends Node2D
 
-var chLength : int = 10
-var chWidth : int = 2
+var chLength : int = 12
+var chWidth : int = 4
 var chDrawCenter : bool = true
 
 var chCenter : ColorRect

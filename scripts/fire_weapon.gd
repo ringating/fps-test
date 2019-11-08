@@ -1,10 +1,10 @@
 extends Node
 
 export var rpm : float = 800 # rounds per minute
-var recoilOffset : Vector3 = Vector3(0, 0, 0.3)
-var recoilRadians : float = .008
-var recoilRecoveryLerpRate : float = 10
-var recoilHorizontalRange : float = .016
+var recoilOffset : Vector3 = Vector3(0, 0, 0.1)
+var recoilRadians : float = .01
+var recoilRecoveryLerpRate : float = 3
+var recoilHorizontalRange : float = .02
 
 var timeBetweenShots : float = 1/(rpm/60) # in seconds
 var timeSinceLastShot : float = timeBetweenShots
