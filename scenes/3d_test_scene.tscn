@@ -11,8 +11,8 @@
 [ext_resource path="res://scripts/register_viewmodel_camera.gd" type="Script" id=9]
 [ext_resource path="res://scripts/viewmodel_sway.gd" type="Script" id=10]
 [ext_resource path="res://scripts/fire_weapon.gd" type="Script" id=11]
-[ext_resource path="res://3D_models/skorpion/skorpion.obj" type="ArrayMesh" id=12]
-[ext_resource path="res://3D_models/skorpion/skorp_material.tres" type="Material" id=13]
+[ext_resource path="res://3D_models/skorpion.obj" type="ArrayMesh" id=12]
+[ext_resource path="res://3D_models/skorp_material.tres" type="Material" id=13]
 [ext_resource path="res://scripts/print_fps_to_label.gd" type="Script" id=14]
 [ext_resource path="res://scripts/crosshair.gd" type="Script" id=15]
 [ext_resource path="res://scripts/toggle_fps_cap.gd" type="Script" id=16]
@@ -117,6 +117,7 @@ mesh = SubResource( 2 )
 material/0 = null
 
 [node name="skorpion_spatial" type="Spatial" parent="viewmodel_container/viewmodel_viewport/Spatial/gun_model_root"]
+editor/display_folded = true
 
 [node name="MeshInstance" type="MeshInstance" parent="viewmodel_container/viewmodel_viewport/Spatial/gun_model_root/skorpion_spatial"]
 transform = Transform( -0.1, 0, -1.50996e-008, 0, 0.1, 0, 1.50996e-008, 0, -0.1, 0, 0, 0 )
