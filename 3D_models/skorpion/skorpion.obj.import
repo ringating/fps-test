@@ -1,0 +1,18 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/skorpion.obj-8de770924e92d08bd3f67b85448f3040.mesh"
+
+[deps]
+
+files=[ "res://.import/skorpion.obj-8de770924e92d08bd3f67b85448f3040.mesh" ]
+
+source_file="res://3D_models/skorpion/skorpion.obj"
+dest_files=[ "res://.import/skorpion.obj-8de770924e92d08bd3f67b85448f3040.mesh", "res://.import/skorpion.obj-8de770924e92d08bd3f67b85448f3040.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true
