@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/D.tga-17b3189f97eec20de5493f9d4cd766a1.s3tc.stex"
-path.etc="res://.import/D.tga-17b3189f97eec20de5493f9d4cd766a1.etc.stex"
+path.s3tc="res://.import/N.tga-b2f11df65b797e8f2e518a434c5d5b15.s3tc.stex"
+path.etc="res://.import/N.tga-b2f11df65b797e8f2e518a434c5d5b15.etc.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://3D_models/D.tga"
-dest_files=[ "res://.import/D.tga-17b3189f97eec20de5493f9d4cd766a1.s3tc.stex", "res://.import/D.tga-17b3189f97eec20de5493f9d4cd766a1.etc.stex" ]
+source_file="res://3D_models/skorpion/N.tga"
+dest_files=[ "res://.import/N.tga-b2f11df65b797e8f2e518a434c5d5b15.s3tc.stex", "res://.import/N.tga-b2f11df65b797e8f2e518a434c5d5b15.etc.stex" ]
 
 [params]
 
@@ -20,12 +20,12 @@ compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
-compress/normal_map=0
+compress/normal_map=1
 flags/repeat=true
 flags/filter=true
 flags/mipmaps=true
 flags/anisotropic=false
-flags/srgb=1
+flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false

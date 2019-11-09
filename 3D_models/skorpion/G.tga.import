@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/S.tga-31439bb399dbe1b4c7b3325fe3e30f9e.s3tc.stex"
-path.etc="res://.import/S.tga-31439bb399dbe1b4c7b3325fe3e30f9e.etc.stex"
+path.s3tc="res://.import/G.tga-fb8197c09b7b6270cb04d8b7034dcc41.s3tc.stex"
+path.etc="res://.import/G.tga-fb8197c09b7b6270cb04d8b7034dcc41.etc.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://3D_models/S.tga"
-dest_files=[ "res://.import/S.tga-31439bb399dbe1b4c7b3325fe3e30f9e.s3tc.stex", "res://.import/S.tga-31439bb399dbe1b4c7b3325fe3e30f9e.etc.stex" ]
+source_file="res://3D_models/skorpion/G.tga"
+dest_files=[ "res://.import/G.tga-fb8197c09b7b6270cb04d8b7034dcc41.s3tc.stex", "res://.import/G.tga-fb8197c09b7b6270cb04d8b7034dcc41.etc.stex" ]
 
 [params]
 

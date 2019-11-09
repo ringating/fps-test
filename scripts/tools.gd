@@ -1,4 +1,4 @@
-extends Node
+# script containing static values and functions
 
 # temporal lerp
 # a rate of 1 should travel half the distance in 1 sec, a rate of 2 should go twice as fast
